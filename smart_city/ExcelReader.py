@@ -22,6 +22,35 @@ class ExcelReader:
     # LeczkowCO, LeczkowNO2, LeczkowPM10
     # PowWarsCO, PowWarsNO2, PowWarsPM10
 
+    # CO
+    # Gdynia
+    PorebskCO = []
+    # Sopot
+    BiPlowcCO = []
+    # Gdansk
+    WyzwoleCO = []
+    LeczkowCO = []
+    PowWarsCO = []
+
+    # NO2
+    # Gdynia
+    PorebskNO2 = []
+    SzafranNO2 = []
+
+    # Gdansk
+    WyzwoleNO2 = []
+    LeczkowNO2 = []
+    PowWarsNO2 = []
+
+    # PM10
+    # Gdynia
+    PorebskPM10 = []
+    SzafranPM10 = []
+    # Gdansk
+    WyzwolePM10 = []
+    LeczkowPM10 = []
+    PowWarsPM10 = []
+    
     def __init__(self):
         # All data is required to make statistics, so  it's better to load them once
         print("starting to load data...")
