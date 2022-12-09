@@ -50,7 +50,7 @@ class ExcelReader:
     WyzwolePM10 = []
     LeczkowPM10 = []
     PowWarsPM10 = []
-    
+
     def __init__(self):
         # All data is required to make statistics, so  it's better to load them once
         print("starting to load data...")
