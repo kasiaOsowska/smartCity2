@@ -1,15 +1,24 @@
 import tkinter as tk
+import DataSetUp
 import matplotlib
 from tkinter import *
 from PIL import Image, ImageTk
+from matplotlib.figure import Figure
+from datetime import datetime
+
+from ExcelReader import ExcelReader
 
 matplotlib.use('TkAgg')
 
-from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg,
     NavigationToolbar2Tk
 )
+
+# przyklad
+excelReader = ExcelReader()
+tab = DataSetUp.get_avg_month_value(excelReader.LeczkowCO)
+#
 
 
 class App(tk.Tk):
@@ -129,6 +138,7 @@ class App(tk.Tk):
         self.setPM10(App.dataPollen)
         self.setCO(App.dataC)
         self.setNO2(App.dataN)
+
         def createNewData(newData):
             self.setPM10(newData)
             self.setCO(newData)
@@ -138,21 +148,21 @@ class App(tk.Tk):
         def motion(event):
             x, y = event.x, event.y
             print('{}, {}'.format(x, y))
-            #PMGdyPorebsk
-            if x < 130 and x>1 and y<80 and y>9:
+            # PMGdyPorebsk
+            if x < 130 and x > 1 and y < 80 and y > 9:
                 newData = {
                     'porebsk': y,
                     'marzec': x
                 }
                 createNewData(newData)
-            #PmGdySzafran
+            # PmGdySzafran
             if x < 140 and x > 40 and y < 100 and y > 80:
                 newData = {
-                   'szafran': y,
+                    'szafran': y,
                     'marzec': x
                 }
                 createNewData(newData)
-            #PmSopBiPlowc
+            # PmSopBiPlowc
             if x < 135 and x > 70 and y < 140 and y > 100:
                 newData = {
                     'Plowc': y,
@@ -166,28 +176,27 @@ class App(tk.Tk):
                     'marzec': x
                 }
                 createNewData(newData)
-            #PmGdaWyzwole
+            # PmGdaWyzwole
             if x < 345 and x > 185 and y < 200 and y > 175:
                 newData = {
                     'Wyzwole': y,
                     'marzec': x
                 }
                 createNewData(newData)
-            #PmGdaLeczkow
+            # PmGdaLeczkow
             if x < 185 and x > 150 and y < 200 and y > 180:
                 newData = {
                     'leczkow': y,
                     'marzec': x
                 }
                 createNewData(newData)
-            #PmGdaPowWars
+            # PmGdaPowWars
             if x < 150 and x > 100 and y < 230 and y > 180:
                 newData = {
                     'PowWars': y,
                     'marzec': x
                 }
                 createNewData(newData)
-
 
         self.bind('<Motion>', motion)
 

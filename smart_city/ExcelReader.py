@@ -63,7 +63,7 @@ class ExcelReader:
         index = 0
         # loading CO
         for row in all_rows:
-            if index < 5:
+            if index < 6:
                 index += 1
                 continue
 
@@ -83,7 +83,7 @@ class ExcelReader:
 
         # loading NO2
         for row in all_rows:
-            if index < 5:
+            if index < 6:
                 index += 1
                 continue
 
@@ -104,7 +104,7 @@ class ExcelReader:
 
         # loading PM10
         for row in all_rows:
-            if index < 5:
+            if index < 6:
                 index += 1
                 continue
 
