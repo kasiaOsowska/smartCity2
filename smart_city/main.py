@@ -5,6 +5,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 from matplotlib.figure import Figure
 from ExcelReader import ExcelReader
+
 from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg,
 )
@@ -106,12 +107,12 @@ class App(tk.Tk):
         self.title('Interaktywna mapa ilustrująca średnie zanieczyszczenie powietrza w 2021 roku')
         self.makesFigures()
         self.miesiace = ['sty', 'lut', 'mar', 'kwi', 'maj', 'czer', 'lip', 'sie', 'wrz',
-                     'paź', 'lis', 'gru']
-        self.brakDanych =[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                         'paź', 'lis', 'gru']
+        self.brakDanych = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         # initialize plots
-        self.setPM10( self.brakDanych)
-        self.setCO( self.brakDanych)
-        self.setNO2( self.brakDanych)
+        self.setPM10(self.brakDanych)
+        self.setCO(self.brakDanych)
+        self.setNO2(self.brakDanych)
 
         def createNewData(newData1, newData2, newData3):
             self.setPM10(newData1)
@@ -122,43 +123,44 @@ class App(tk.Tk):
         def motion(event):
             x, y = event.x, event.y
             # PMGdyPorebsk
-            if x < 130 and x > 1 and y < 80 and y > 9:
+            if 130 > x > 1 and 80 > y > 9:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.PorebskPM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.PorebskCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.PorebskNO2)
                 createNewData(newDataP, newDataC, newDataN)
             # PmGdySzafran
-            if x < 140 and x > 40 and y < 100 and y > 80:
+            if 140 > x > 40 and 100 > y > 80:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.SzafranPM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.PorebskCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.SzafranNO2)
                 createNewData(newDataP, newDataC, newDataN)
             # PmSopBiPlowc
-            if x < 135 and x > 70 and y < 140 and y > 100:
+            if 135 > x > 70 and 140 > y > 100:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.SzafranPM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.BiPlowcCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.SzafranNO2)
                 createNewData(newDataP, newDataC, newDataN)
             # PmGdaWyzwole
-            if x < 345 and x > 90 and y < 200 and y > 140:
+            if 345 > x > 90 and 200 > y > 140:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.WyzwolePM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.WyzwoleCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.WyzwoleNO2)
                 createNewData(newDataP, newDataC, newDataN)
             # PmGdaLeczkow
-            if x < 185 and x > 150 and y < 200 and y > 180:
+            if 185 > x > 150 and 200 > y > 180:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.LeczkowPM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.LeczkowCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.LeczkowNO2)
                 createNewData(newDataP, newDataC, newDataN)
             # PmGdaPowWars
-            if x < 150 and x > 100 and y < 230 and y > 180:
+            if 150 > x > 100 and 230 > y > 180:
                 newDataP = DataSetUp.get_avg_month_value(excelReader.PowWarsPM10)
                 newDataC = DataSetUp.get_avg_month_value(excelReader.PowWarsCO)
                 newDataN = DataSetUp.get_avg_month_value(excelReader.PowWarsNO2)
                 createNewData(newDataP, newDataC, newDataN)
 
         self.bind('<Motion>', motion)
+
 
 app = App()
 app.mainloop()
