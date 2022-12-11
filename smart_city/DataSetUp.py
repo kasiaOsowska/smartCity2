@@ -23,5 +23,3 @@ def get_avg_month_value(tab):
         months[x] = months[x] / howmanyData[x]
 
     return months
-
-
